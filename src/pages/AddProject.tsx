@@ -17,7 +17,7 @@ const AddProject = () => {
 			const res = await addProject(modifiedInfo).unwrap();
 			if (res?.success) {
 				toast.success('Project added successfully!');
-				navigate('/');
+				navigate('/projects');
 			} else {
 				toast.error('Something went wrong!');
 			}

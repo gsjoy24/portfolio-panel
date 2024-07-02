@@ -1,6 +1,6 @@
 import { Button, Menu } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { FaListAlt, FaUser } from 'react-icons/fa';
+import { FaBloggerB, FaListAlt, FaUser } from 'react-icons/fa';
 import { GoProjectTemplate } from 'react-icons/go';
 import { HiLogout } from 'react-icons/hi';
 import { IoMdHome } from 'react-icons/io';
@@ -36,13 +36,13 @@ const Sidebar = () => {
 		},
 		{
 			key: '5',
-			icon: <IoMdHome />,
-			label: <NavLink to='/products'>Home</NavLink>
+			icon: <FaBloggerB />,
+			label: <NavLink to='/blogs'>Blogs</NavLink>
 		},
 		{
 			key: '6',
-			icon: <IoMdHome />,
-			label: <NavLink to='/products'>Home</NavLink>
+			icon: <IoAdd />,
+			label: <NavLink to='/add-blog'>Add Blog</NavLink>
 		}
 	];
 
