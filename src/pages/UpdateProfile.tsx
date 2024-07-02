@@ -2,7 +2,7 @@ import { Button, Form, Input, Spin } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { useGetProfileQuery, useLoginMutation, useUpdateProfileMutation } from '../redux/features/auth/userApi';
+import { useGetProfileQuery, useUpdateProfileMutation } from '../redux/features/auth/userApi';
 
 const UpdateProfile = () => {
 	const { data, isFetching } = useGetProfileQuery({});
@@ -36,7 +36,7 @@ const UpdateProfile = () => {
 				toast.error('Something went wrong!');
 			}
 		} catch (error: any) {
-			console.log({ error });
+			// console.log({ error });
 
 			// show error message
 			toast.error((error as any)?.data?.message || 'Something went wrong!');
@@ -80,13 +80,6 @@ const UpdateProfile = () => {
 				<Form.Item name='resumeLink'>
 					<Input className='p-3 mt-2' placeholder='Resume Link' />
 				</Form.Item>
-				<Form.Item shouldUpdate>
-					{() => (
-						<Button className='p-2 h-max' type='dashed' htmlType='submit' block>
-							{isLoading ? <Spin /> : 'Login'}
-						</Button>
-					)}
-				</Form.Item>
 			</Form>
 
 			<Form form={form} onFinish={onFinish} initialValues={socialLinks}>
@@ -110,13 +103,6 @@ const UpdateProfile = () => {
 				<label htmlFor='github'>GitHub</label>
 				<Form.Item name='github'>
 					<Input className='p-3 mt-2' placeholder='Social Links' />
-				</Form.Item>
-				<Form.Item shouldUpdate>
-					{() => (
-						<Button className='p-2 h-max' type='dashed' htmlType='submit' block>
-							{isLoading ? <Spin /> : 'Update'}
-						</Button>
-					)}
 				</Form.Item>
 			</Form>
 

@@ -55,7 +55,7 @@ const Login = () => {
 				onFinish={onFinish}
 				initialValues={defaultValues}
 			>
-				<h1 className='text-white text-4xl font-bold text-center mb-12'>Dream Gadgets</h1>
+				<h1 className='text-white text-4xl font-bold text-center mb-12'>Gour Saha Joy</h1>
 				<Form.Item name='email' rules={[{ required: true, message: 'Please input your email!' }]}>
 					<Input className='p-3' prefix={<FaEnvelope className='site-form-item-icon' />} placeholder='Email' />
 				</Form.Item>
