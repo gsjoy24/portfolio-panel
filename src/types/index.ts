@@ -28,6 +28,7 @@ export type TProfile = {
 };
 
 export type TProject = {
+	_id: string;
 	title: string;
 	description: string;
 	frontEndTech: string;

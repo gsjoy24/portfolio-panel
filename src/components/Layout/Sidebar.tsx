@@ -1,6 +1,7 @@
 import { Button, Menu } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 import { FaListAlt, FaUser } from 'react-icons/fa';
+import { GoProjectTemplate } from 'react-icons/go';
 import { HiLogout } from 'react-icons/hi';
 import { IoMdHome } from 'react-icons/io';
 import { IoAdd } from 'react-icons/io5';
@@ -25,16 +26,21 @@ const Sidebar = () => {
 		},
 		{
 			key: '3',
+			icon: <GoProjectTemplate />,
+			label: <NavLink to='/projects'>Projects</NavLink>
+		},
+		{
+			key: '4',
 			icon: <IoAdd />,
 			label: <NavLink to='/add-project'>Add Project</NavLink>
 		},
 		{
-			key: '4',
+			key: '5',
 			icon: <IoMdHome />,
 			label: <NavLink to='/products'>Home</NavLink>
 		},
 		{
-			key: '5',
+			key: '6',
 			icon: <IoMdHome />,
 			label: <NavLink to='/products'>Home</NavLink>
 		}

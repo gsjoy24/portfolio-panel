@@ -3,6 +3,7 @@ import App from '../App';
 import AddProject from '../pages/AddProject';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
+import Projects from '../pages/Projects';
 import UpdateProfile from '../pages/UpdateProfile';
 import UpdateProject from '../pages/UpdateProject';
 
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
 			{
 				path: '/update-profile',
 				element: <UpdateProfile />
+			},
+			{
+				path: '/projects',
+				element: <Projects />
 			},
 			{
 				path: '/add-project',
