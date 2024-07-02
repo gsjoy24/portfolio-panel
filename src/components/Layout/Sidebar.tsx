@@ -3,6 +3,7 @@ import Sider from 'antd/es/layout/Sider';
 import { FaListAlt, FaUser } from 'react-icons/fa';
 import { HiLogout } from 'react-icons/hi';
 import { IoMdHome } from 'react-icons/io';
+import { IoAdd } from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
 import { logOut, selectCurrentUser } from '../../redux/features/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -24,8 +25,8 @@ const Sidebar = () => {
 		},
 		{
 			key: '3',
-			icon: <IoMdHome />,
-			label: <NavLink to='/products'>Home</NavLink>
+			icon: <IoAdd />,
+			label: <NavLink to='/add-project'>Add Project</NavLink>
 		},
 		{
 			key: '4',
