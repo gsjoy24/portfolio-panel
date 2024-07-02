@@ -4,6 +4,7 @@ import AddProject from '../pages/AddProject';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import UpdateProfile from '../pages/UpdateProfile';
+import UpdateProject from '../pages/UpdateProject';
 
 const router = createBrowserRouter([
 	{
@@ -21,11 +22,11 @@ const router = createBrowserRouter([
 			{
 				path: '/add-project',
 				element: <AddProject />
+			},
+			{
+				path: '/update-project/:id',
+				element: <UpdateProject />
 			}
-			// {
-			// 	path: '/update-profile',
-			// 	element: <UpdateProfile />
-			// },
 			// {
 			// 	path: '/update-profile',
 			// 	element: <UpdateProfile />
