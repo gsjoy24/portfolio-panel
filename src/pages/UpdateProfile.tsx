@@ -44,7 +44,7 @@ const UpdateProfile = () => {
 	};
 
 	return isFetching ? (
-		<Spin size='large' />
+		<Spin fullscreen size='large' tip='Please wait!' />
 	) : (
 		<div className='mx-4'>
 			<Form form={form} onFinish={onFinish} initialValues={restData}>

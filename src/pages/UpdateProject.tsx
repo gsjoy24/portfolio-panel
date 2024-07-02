@@ -3,24 +3,27 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import TextEditor from '../components/TextEditor';
-import { useAddProjectMutation } from '../redux/features/auth/projectApi';
+import { useGetProjectQuery, useUpdateProjectMutation } from '../redux/features/auth/projectApi';
 
 const UpdateProject = () => {
-	// get the params
-	const params = useParams();
-	console.log(params);
+	const { id } = useParams();
 	const [form] = Form.useForm();
 	const [content, setContent] = useState<string>('');
-	const [addProject, { isLoading }] = useAddProjectMutation();
+	const { data, isFetching } = useGetProjectQuery(id);
+	const [updateProject, { isLoading }] = useUpdateProjectMutation();
 	const navigate = useNavigate();
+	const { description, ...restData } = data?.data;
 
 	const onFinish = async (data: any) => {
 		const modifiedInfo = { ...data, description: content };
 
 		try {
-			const res = await addProject(modifiedInfo).unwrap();
+			const res = await updateProject({
+				id,
+				data: modifiedInfo
+			}).unwrap();
 			if (res?.success) {
-				toast.success('Project added successfully!');
+				toast.success('Project updated successfully!');
 				navigate('/');
 			} else {
 				toast.error('Something went wrong!');
@@ -32,10 +35,12 @@ const UpdateProject = () => {
 		}
 	};
 
-	return (
+	return isFetching ? (
+		<Spin fullscreen size='large' tip='Please wait!' />
+	) : (
 		<div>
 			<h1 className='text-4xl font-bold text-center mb-12'>Add Project</h1>
-			<Form form={form} onFinish={onFinish}>
+			<Form form={form} onFinish={onFinish} initialValues={restData}>
 				<label htmlFor='title'>Title</label>
 				<Form.Item name='title'>
 					<Input className='p-3 mt-2' placeholder='Phone' />
@@ -77,11 +82,11 @@ const UpdateProject = () => {
 				</Form.Item>
 
 				<label>Description</label>
-				<TextEditor content={content} setContent={setContent} />
+				<TextEditor content={description} setContent={setContent} />
 				<Form.Item shouldUpdate>
 					{() => (
-						<Button className='p-2 h-max' type='dashed' htmlType='submit' block>
-							{isLoading ? <Spin /> : 'Add'}
+						<Button className='p-2 h-max mt-5' type='dashed' htmlType='submit' block>
+							{isLoading ? <Spin /> : 'Update'}
 						</Button>
 					)}
 				</Form.Item>

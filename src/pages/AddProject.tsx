@@ -76,7 +76,7 @@ const AddProject = () => {
 				<TextEditor content={content} setContent={setContent} />
 				<Form.Item shouldUpdate>
 					{() => (
-						<Button className='p-2 h-max' type='dashed' htmlType='submit' block>
+						<Button className='p-2 h-max mt-5' type='dashed' htmlType='submit' block>
 							{isLoading ? <Spin /> : 'Add'}
 						</Button>
 					)}
