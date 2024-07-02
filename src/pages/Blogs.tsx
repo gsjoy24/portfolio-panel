@@ -1,4 +1,5 @@
 const Blogs = () => {
+	const { data } = useGetBlogsQuery();
 	return (
 		<div>
 			<h1>This is Blogs component</h1>
