@@ -1,7 +1,8 @@
 import { Button, Menu } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { FaListAlt } from 'react-icons/fa';
+import { FaListAlt, FaUser } from 'react-icons/fa';
 import { HiLogout } from 'react-icons/hi';
+import { IoMdHome } from 'react-icons/io';
 import { NavLink } from 'react-router-dom';
 import { logOut, selectCurrentUser } from '../../redux/features/auth/authSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -13,8 +14,28 @@ const Sidebar = () => {
 	let sidebarItems = [
 		{
 			key: '1',
-			icon: <FaListAlt />,
-			label: <NavLink to='/products'>Products</NavLink>
+			icon: <IoMdHome />,
+			label: <NavLink to='/'>Home</NavLink>
+		},
+		{
+			key: '2',
+			icon: <FaUser />,
+			label: <NavLink to='/update-profile'>Update Profile</NavLink>
+		},
+		{
+			key: '3',
+			icon: <IoMdHome />,
+			label: <NavLink to='/products'>Home</NavLink>
+		},
+		{
+			key: '4',
+			icon: <IoMdHome />,
+			label: <NavLink to='/products'>Home</NavLink>
+		},
+		{
+			key: '5',
+			icon: <IoMdHome />,
+			label: <NavLink to='/products'>Home</NavLink>
 		}
 	];
 

@@ -25,7 +25,6 @@ const Login = () => {
 	const onFinish = async (data: any) => {
 		try {
 			const res = await login(data).unwrap();
-			console.log({ res });
 			const userInfo = verifyToken(res?.data?.accessToken) as TUser;
 
 			// save user info and token in redux store
