@@ -10,6 +10,13 @@ const userApi = baseApi.injectEndpoints({
 			})
 		}),
 
+		getProfile: builder.query({
+			query: () => ({
+				url: '/profile',
+				method: 'GET'
+			})
+		}),
+
 		updateProfile: builder.mutation({
 			query: ({ id, data }) => ({
 				url: `/profile/${id}`,
@@ -20,4 +27,4 @@ const userApi = baseApi.injectEndpoints({
 	})
 });
 
-export const { useLoginMutation } = userApi;
+export const { useLoginMutation, useGetProfileQuery, useUpdateProfileMutation } = userApi;
