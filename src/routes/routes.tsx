@@ -6,6 +6,7 @@ import Blogs from '../pages/Blogs';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Projects from '../pages/Projects';
+import UpdateBlog from '../pages/UpdateBlog';
 import UpdateProfile from '../pages/UpdateProfile';
 import UpdateProject from '../pages/UpdateProject';
 
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/update-blog/:id',
-				element: <UpdateProfile />
+				element: <UpdateBlog />
 			}
 		]
 	},
