@@ -1,5 +1,5 @@
 import { Button, Form, Input, Spin } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import TextEditor from '../components/TextEditor';
@@ -8,14 +8,19 @@ import { useGetBlogQuery, useUpdateBlogMutation } from '../redux/features/auth/b
 const UpdateBlog = () => {
 	const { id } = useParams();
 	const [form] = Form.useForm();
-	const [description, setDescription] = useState<string>('');
+	const [content, setContent] = useState<string>('');
 	const { data, isFetching } = useGetBlogQuery(id);
 	const [updateBlog, { isLoading }] = useUpdateBlogMutation();
 	const navigate = useNavigate();
-	const { content, ...restData } = data?.data;
+	useEffect(() => {
+		if (data?.data) {
+			const { content } = data.data;
+			setContent(content);
+		}
+	}, [data]);
 
 	const onFinish = async (data: any) => {
-		const modifiedInfo = { ...data, content: description };
+		const modifiedInfo = { ...data, content };
 
 		try {
 			const res = await updateBlog({
@@ -23,14 +28,12 @@ const UpdateBlog = () => {
 				data: modifiedInfo
 			}).unwrap();
 			if (res?.success) {
-				toast.success('Project updated successfully!');
+				toast.success('Blog updated successfully!');
 				navigate('/');
 			} else {
 				toast.error('Something went wrong!');
 			}
 		} catch (error: any) {
-			// console.log({ error });
-			// show error message
 			toast.error((error as any)?.data?.message || 'Something went wrong!');
 		}
 	};
@@ -40,7 +43,7 @@ const UpdateBlog = () => {
 	) : (
 		<div>
 			<h1 className='text-4xl font-bold text-center mb-12'>Update Blog</h1>
-			<Form form={form} onFinish={onFinish} initialValues={restData}>
+			<Form form={form} onFinish={onFinish} initialValues={data?.data}>
 				<label htmlFor='title'>Title</label>
 				<Form.Item name='title'>
 					<Input className='p-3 mt-2' placeholder='Title' />
@@ -52,7 +55,7 @@ const UpdateBlog = () => {
 				</Form.Item>
 
 				<label>Content</label>
-				<TextEditor content={content || ''} setContent={setDescription} />
+				<TextEditor content={content} setContent={setContent} />
 				<Form.Item shouldUpdate>
 					{() => (
 						<Button className='p-2 h-max mt-5' type='dashed' htmlType='submit' block>

@@ -7,7 +7,8 @@ const projectApi = baseApi.injectEndpoints({
 				url: '/projects',
 				method: 'POST',
 				body: data
-			})
+			}),
+			invalidatesTags: ['projects']
 		}),
 
 		getProjects: builder.query({
@@ -22,7 +23,8 @@ const projectApi = baseApi.injectEndpoints({
 			query: (id) => ({
 				url: `/projects/${id}`,
 				method: 'GET'
-			})
+			}),
+			providesTags: ['project']
 		}),
 
 		deleteProject: builder.mutation({
@@ -30,7 +32,7 @@ const projectApi = baseApi.injectEndpoints({
 				url: `/projects/${id}`,
 				method: 'DELETE'
 			}),
-			invalidatesTags: ['projects']
+			invalidatesTags: ['projects', 'project']
 		}),
 
 		updateProject: builder.mutation({
@@ -39,7 +41,7 @@ const projectApi = baseApi.injectEndpoints({
 				method: 'PUT',
 				body: data
 			}),
-			invalidatesTags: ['projects']
+			invalidatesTags: ['projects', 'project']
 		})
 	})
 });

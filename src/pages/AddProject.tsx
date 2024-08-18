@@ -34,7 +34,7 @@ const AddProject = () => {
 			<Form form={form} onFinish={onFinish}>
 				<label htmlFor='title'>Title</label>
 				<Form.Item name='title'>
-					<Input className='p-3 mt-2' placeholder='Phone' />
+					<Input className='p-3 mt-2' placeholder='Title' />
 				</Form.Item>
 
 				<label htmlFor='frontEndTech'>Frontend Tech</label>

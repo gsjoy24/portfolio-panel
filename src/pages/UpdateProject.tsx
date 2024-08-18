@@ -1,5 +1,5 @@
 import { Button, Form, Input, Spin } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import TextEditor from '../components/TextEditor';
@@ -7,15 +7,21 @@ import { useGetProjectQuery, useUpdateProjectMutation } from '../redux/features/
 
 const UpdateProject = () => {
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const [form] = Form.useForm();
-	const [content, setContent] = useState<string>('');
+	const [description, setDescription] = useState<string>('');
 	const { data, isFetching } = useGetProjectQuery(id);
 	const [updateProject, { isLoading }] = useUpdateProjectMutation();
-	const navigate = useNavigate();
-	const { description, ...restData } = data?.data;
+
+	useEffect(() => {
+		if (data?.data) {
+			const { description } = data.data;
+			setDescription(description);
+		}
+	}, [data]);
 
 	const onFinish = async (data: any) => {
-		const modifiedInfo = { ...data, description: content };
+		const modifiedInfo = { ...data, description };
 
 		try {
 			const res = await updateProject({
@@ -24,13 +30,11 @@ const UpdateProject = () => {
 			}).unwrap();
 			if (res?.success) {
 				toast.success('Project updated successfully!');
-				navigate('/');
+				navigate('/projects');
 			} else {
 				toast.error('Something went wrong!');
 			}
 		} catch (error: any) {
-			// console.log({ error });
-			// show error message
 			toast.error((error as any)?.data?.message || 'Something went wrong!');
 		}
 	};
@@ -40,7 +44,7 @@ const UpdateProject = () => {
 	) : (
 		<div>
 			<h1 className='text-4xl font-bold text-center mb-12'>Add Project</h1>
-			<Form form={form} onFinish={onFinish} initialValues={restData}>
+			<Form form={form} onFinish={onFinish} initialValues={data?.data}>
 				<label htmlFor='title'>Title</label>
 				<Form.Item name='title'>
 					<Input className='p-3 mt-2' placeholder='Phone' />
@@ -82,7 +86,7 @@ const UpdateProject = () => {
 				</Form.Item>
 
 				<label>Description</label>
-				<TextEditor content={description} setContent={setContent} />
+				<TextEditor content={description} setContent={setDescription} />
 				<Form.Item shouldUpdate>
 					{() => (
 						<Button className='p-2 h-max mt-5' type='dashed' htmlType='submit' block>

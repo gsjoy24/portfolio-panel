@@ -39,22 +39,10 @@ const Login = () => {
 			toast.error((error as any)?.data?.message || 'Something went wrong!');
 		}
 	};
-	// ! This is the default values for the form fields if needed
-	const defaultValues = {
-		email: 'gour.joy24@gmail.com',
-		password: 'GSJoy@Dev'
-	};
 
 	return (
 		<div className='bg-gray-900 flex flex-col justify-center items-center h-[100vh]'>
-			<Form
-				className='max-w-80 w-full'
-				form={form}
-				name='horizontal_login'
-				layout='vertical'
-				onFinish={onFinish}
-				initialValues={defaultValues}
-			>
+			<Form className='max-w-80 w-full' form={form} name='horizontal_login' layout='vertical' onFinish={onFinish}>
 				<h1 className='text-white text-4xl font-bold text-center mb-12'>Gour Saha Joy</h1>
 				<Form.Item name='email' rules={[{ required: true, message: 'Please input your email!' }]}>
 					<Input className='p-3' prefix={<FaEnvelope className='site-form-item-icon' />} placeholder='Email' />

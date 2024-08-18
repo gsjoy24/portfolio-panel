@@ -86,23 +86,23 @@ const UpdateProfile = () => {
 				<h2 className='text-2xl font-bold text-center mb-6'>Social Links</h2>
 				<label htmlFor='facebook'>Facebook</label>
 				<Form.Item name='facebook'>
-					<Input className='p-3 mt-2' placeholder='Social Links' />
+					<Input className='p-3 mt-2' placeholder='https://facebook.com/' />
 				</Form.Item>
 				<label htmlFor='linkedin'>LinkedIn</label>
 				<Form.Item name='linkedin'>
-					<Input className='p-3 mt-2' placeholder='Social Links' />
+					<Input className='p-3 mt-2' placeholder='https://linkedin.com/in/' />
 				</Form.Item>
 				<label htmlFor='youtube'>YouTube</label>
 				<Form.Item name='youtube'>
-					<Input className='p-3 mt-2' placeholder='Social Links' />
+					<Input className='p-3 mt-2' placeholder='https://youtube.com/' />
 				</Form.Item>
 				<label htmlFor='x'>X</label>
 				<Form.Item name='x'>
-					<Input className='p-3 mt-2' placeholder='Social Links' />
+					<Input className='p-3 mt-2' placeholder='https://x.com/' />
 				</Form.Item>
 				<label htmlFor='github'>GitHub</label>
 				<Form.Item name='github'>
-					<Input className='p-3 mt-2' placeholder='Social Links' />
+					<Input className='p-3 mt-2' placeholder='https://github.com/' />
 				</Form.Item>
 			</Form>
 
