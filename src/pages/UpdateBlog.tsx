@@ -14,7 +14,7 @@ const UpdateBlog = () => {
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (data?.data) {
-			const { content } = data.data;
+			const { content } = data.data ?? {};
 			setContent(content);
 		}
 	}, [data]);

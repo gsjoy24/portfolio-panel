@@ -15,7 +15,7 @@ const UpdateProject = () => {
 
 	useEffect(() => {
 		if (data?.data) {
-			const { description } = data.data;
+			const { description } = data.data ?? {};
 			setDescription(description);
 		}
 	}, [data]);

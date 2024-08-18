@@ -11,16 +11,16 @@ import { verifyToken } from '../utils/verifyToken';
 
 const Login = () => {
 	// check if user is already logged in. If yes, redirect to products page
-	const token: string | null = useAppSelector(selectCurrentToken);
-	if (token) {
-		return <Navigate to='/' replace />;
-	}
-
 	const [form] = Form.useForm();
 	const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const [login, { isLoading }] = useLoginMutation();
+
+	const token: string | null = useAppSelector(selectCurrentToken);
+	if (token) {
+		return <Navigate to='/' replace />;
+	}
 
 	const onFinish = async (data: any) => {
 		try {
