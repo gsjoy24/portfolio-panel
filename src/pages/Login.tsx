@@ -33,10 +33,8 @@ const Login = () => {
 			// redirect to products page after successful login
 			navigate(`/`);
 		} catch (error: any) {
-			console.log({ error });
-
 			// show error message
-			toast.error((error as any)?.data?.message || 'Something went wrong!');
+			toast.error(error?.data?.message || 'Something went wrong!');
 		}
 	};
 

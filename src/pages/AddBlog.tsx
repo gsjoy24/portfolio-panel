@@ -23,7 +23,7 @@ const AddBlog = () => {
 				toast.error('Something went wrong!');
 			}
 		} catch (error: any) {
-			toast.error((error as any)?.data?.message || 'Something went wrong!');
+			toast.error(error?.data?.message || 'Something went wrong!');
 		}
 	};
 

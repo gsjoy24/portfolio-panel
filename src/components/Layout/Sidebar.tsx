@@ -1,16 +1,15 @@
 import { Button, Menu } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { FaBloggerB, FaListAlt, FaUser } from 'react-icons/fa';
+import { FaBloggerB, FaUser } from 'react-icons/fa';
 import { GoProjectTemplate } from 'react-icons/go';
 import { HiLogout } from 'react-icons/hi';
 import { IoMdHome } from 'react-icons/io';
 import { IoAdd } from 'react-icons/io5';
 import { NavLink } from 'react-router-dom';
-import { logOut, selectCurrentUser } from '../../redux/features/auth/authSlice';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { logOut } from '../../redux/features/auth/authSlice';
+import { useAppDispatch } from '../../redux/hooks';
 
 const Sidebar = () => {
-	const user = useAppSelector(selectCurrentUser);
 	const dispatch = useAppDispatch();
 
 	let sidebarItems = [
